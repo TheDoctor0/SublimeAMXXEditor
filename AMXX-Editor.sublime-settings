@@ -1,5 +1,5 @@
 {
-	// Example: AMXXEditor 3.0.0 by Destro
+	// Sublime AMXX Editor by Destro && TheDoctor0
 
 	/* COMPILER */
 	"include_directory":	"C:\\amxmodx\\scripting\\include\\",	// Path to includes folder

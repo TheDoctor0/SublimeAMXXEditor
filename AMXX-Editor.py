@@ -1,4 +1,4 @@
-# Sublime AMXX-Editor by Destro
+# Sublime AMXX-Editor by Destro & TheDoctor0
 
 import os
 import re
@@ -2525,7 +2525,6 @@ def print_debug(level, msg):
 		print("[AMXX-Editor - %s]: %s" % (time.strftime("%H:%M:%S"), msg))
 #}
 
-EDITOR_VERSION 		= "3.0.0"
 FUNC_TYPES 			= [ "Function", "Public", "Stock", "Forward", "Native" ]
 
 STYLES_POPUP		= [ "white", "dark" ]
