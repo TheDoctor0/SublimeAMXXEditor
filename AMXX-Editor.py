@@ -1086,9 +1086,6 @@ class SublimeEvents(sublime_plugin.EventListener):
 
 			return ([ ], sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
 
-		if len(prefix) > 1 :
-			return None
-
 		line 		= view.rowcol(locations[0])[0] + 1
 		file_name 	= view.file_name()
 		funcset 	= set()
