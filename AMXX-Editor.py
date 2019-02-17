@@ -2491,7 +2491,7 @@ class pawnParse:
 			autocompletion += ')'
 			funcparams = func[func.find("(")+1:-1]
 
-			self.add_autocompletion(funcname, FUNC_TYPES[type].lower(), autocompletion)
+			self.add_autocompletion(funcname + '(' + str(len(params)) + ')', FUNC_TYPES[type].lower(), autocompletion)
 			self.debug_print(2, "INFO: parse_function_params", "add -> [%s]" % func)
 
 			# Function Block&Local vars #############
