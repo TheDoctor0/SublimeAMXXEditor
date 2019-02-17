@@ -766,7 +766,7 @@ class SublimeEvents(sublime_plugin.EventListener):
 		link_local 	= found[2] + '#' + found[0] + '#' + str(found[5])
 		link_web 	= ''
 
-		if found[3] and os.path.dirname(g_include_dir) == os.path.dirname(found[2]) :
+		if found[3] and g_include_dir == os.path.dirname(found[2]) :
 			link_web = filename.rsplit('.', 1)[0] + '#' + found[0] + '#'
 
 		html  = '<body><style> html { font-size: '+ str(fontSize)  +'px; }\n'+ g_popupCSS +'</style>'
