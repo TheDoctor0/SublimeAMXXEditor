@@ -1,17 +1,9 @@
 [
 	{
-		"caption": "AMX Mod-X",
-		"id": "amxmodx",
+		"caption": "AMX Mod X",
+		"id": "amxx-editor",
 		"children":
 		[
-			{
-				"command": "about_amxx_editor",
-				"caption": "About AMXX-Editor"
-			},
-			{
-				"command": "update_amxx_editor"
-			},
-			{ "caption": "-" },
 			{
 				"command": "edit_settings", "args":
 				{
@@ -121,7 +113,7 @@
 				"caption": 	"Find/Replace in Includes"
 			},
 			{
-				"command": 	"amxx_build_ver",
+				"command": 	"amxx_editor_increment_version",
 				"caption": 	"Increment Version"
 			},
 			{ "caption": "-" },

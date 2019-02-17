@@ -684,7 +684,7 @@ class SublimeEvents(sublime_plugin.EventListener):
 		if not is_amxmodx_file(view) or not g_enable_buildversion :
 			return
 
-		view.run_command("amxx_editor_increment_verion")
+		view.run_command("amxx_editor_increment_version")
 
 	def on_hover(self, view, point, hover_zone):
 		if hover_zone != sublime.HOVER_TEXT:
