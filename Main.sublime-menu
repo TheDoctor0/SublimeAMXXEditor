@@ -1,16 +1,16 @@
 [
 	{
-		"caption": "AMX Mod X",
+		"caption": "AMX Editor",
 		"id": "amxx-editor",
 		"children":
 		[
 			{
+				"caption": "Edit Settings",
 				"command": "edit_settings", "args":
 				{
 					"base_file": "${packages}/amxmodx/AMXX-Editor.sublime-settings",
 					"default": "{\n\t$0\n}\n"
 				},
-				"caption": "Edit Settings"
 			},
 			{
 				"caption": "Color Style",
@@ -126,5 +126,5 @@
 				"caption": "New Include"
 			},
 		]
-	}
+	},
 ]
