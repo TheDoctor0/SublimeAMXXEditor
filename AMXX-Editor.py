@@ -20,22 +20,11 @@ from watchdog.utils.bricks import OrderedSetQueue
 
 from pathtools.path import list_files
 
-
-
 def plugin_loaded() :
 #{
 	from string import Template
 
-	l = dict()
-	l['lang_my2'] 	= "cuatro"
-	l['lang_your']	= "seiex"
-
-	t = Template("test lang: ${lang_my} + ${lang_your} = 10")
-	print(t.safe_substitute(l))
-
-
 	settings_modified(True)
-	sublime.set_timeout_async(check_update, 2500)
 #}
 
 def unload_handler() :
@@ -145,93 +134,6 @@ def new_file(type):
 	plugin_template = plugin_template.replace("\r", "")
 
 	view.run_command("insert_snippet", {"contents": plugin_template})
-#}
-
-class AboutAmxxEditorCommand(sublime_plugin.WindowCommand):
-#{
-	def run(self):
-	#{
-		about = """
-Sublime AMXX-Editor v""" + EDITOR_VERSION + """ by Destro
-
-CREDITs:
-- Great:
-   ppalex7     (SourcePawn Completions)
-
-- Contributors:
-   sasske        (white color scheme)
-   addons_zz (npp color scheme)
-   KliPPy        (build version)
-   Mistrick     (mistrick color scheme)
-"""
-		sublime.message_dialog(about)
-	#}
-#}
-
-class UpdateAmxxEditorCommand(sublime_plugin.WindowCommand):
-#{
-	def run(self) :
-		global g_check_update
-		g_check_update = True
-		sublime.set_timeout_async(self.check_update_async, 100)
-
-	def is_enabled(self) :
-		if g_check_update :
-			return False
-		return True
-
-	def description(self) :
-		if g_check_update :
-			return "Get info..."
-		return "Check for Updates"
-
-	def check_update_async(self) :
-		check_update(True)
-#}
-
-def check_update(bycommand=0) :
-#{
-	global g_check_update
-
-	g_check_update = True
-
-	try:
-		c = urllib.request.urlopen("https://amxmodx-es.com/st.php")
-	except:
-		if bycommand :
-			sublime.error_message("Error 'urlopen' in check_update()")
-		else :
-			print_debug(0, "Error 'urlopen' in check_update()")
-		c = None
-
-	g_check_update = False
-
-	if not c :
-		return
-
-	data = c.read().decode("utf-8", "replace")
-
-	if data :
-	#{
-		data = data.split("\n", 1)
-
-		fCheckVersion = float(data[0])
-		fCurrentVersion = float(EDITOR_VERSION)
-
-		if fCheckVersion == fCurrentVersion and bycommand :
-			msg = "AMXX: You are using the latest version v"+ EDITOR_VERSION
-			sublime.ok_cancel_dialog(msg, "OK")
-
-		if fCheckVersion > fCurrentVersion :
-		#{
-			msg  = "AMXX: A new version available v"+ data[0]
-			msg += "\n\nNews:\n" + data[1]
-			ok = sublime.ok_cancel_dialog(msg, "Update")
-
-			if ok :
-				webbrowser.open_new_tab("https://amxmodx-es.com/showthread.php?tid=12316")
-		#}
-	#}
 #}
 
 class FindAllAmxxEditorCommand(sublime_plugin.WindowCommand):
@@ -760,7 +662,6 @@ class AmxxEditorIncrementVersionCommand(sublime_plugin.TextCommand):
 		self.view.replace(edit, region, result.group(1) + str(build) + beta + '\"')
 
 	def is_enabled(self) :
-
 		window = sublime.active_window()
 		view = window.active_view()
 
@@ -776,8 +677,6 @@ class SublimeEvents(sublime_plugin.EventListener):
 		gWatchdogObserver.start()
 
 	def on_window_command(self, window, cmd, args) :
-
-		#print("cmd [%s] [%s]" % (cmd, args))
 		if cmd != "build" :
 			return
 
@@ -1172,11 +1071,9 @@ class SublimeEvents(sublime_plugin.EventListener):
 			return ([ ], sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS)
 
 		word = view.substr(view.word(locations[0]))
-		print("debug: [%s][%s][%s]" % (view.substr(locations[0]-1), prefix, word))
 
 		fullLine 	= view.substr(view.full_line(locations[0])).strip()
 		if fullLine[0] == '#' :
-
 			if fullLine.startswith("#include") or fullLine.startswith("#tryinclude"):
 				return self.autocomplete_includes(fullLine)
 
@@ -1285,8 +1182,6 @@ def settings_modified(register_callback = False) :
 	if g_ignore_settings :
 		return
 
-	print("on_settings_modified:")
-
 	settings = sublime.load_settings("AMXX-Editor.sublime-settings")
 	if register_callback :
 		settings.add_on_change('amxx', on_settings_modified)
@@ -1353,8 +1248,6 @@ def settings_modified(register_callback = False) :
 	g_style_popup['active']		= settings.get("style_popup")
 	g_style_editor['active']	= settings.get("style_editor")
 	g_style_console['active']	= settings.get("style_console")
-
-	print("color active: popup(%s) editor(%s) console(%s)" % (g_style_popup['active'], g_style_editor['active'], g_style_console['active']))
 
 	load_styles(g_style_popup,	"-popup.css")
 	load_styles(g_style_editor,	"-pawn.sublime-color-scheme")
@@ -2662,7 +2555,6 @@ g_include_dir 		= "."
 g_invalid_settings	= False
 g_ignore_settings 	= False
 g_edit_settings 	= False
-g_check_update		= False
 
 g_to_process 		= OrderedSetQueue()
 g_nodes 			= dict()
