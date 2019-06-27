@@ -1,9 +1,11 @@
-# Sublime AMXX Editor
+# Sublime AMXX Editor [![StyleCI](https://github.styleci.io/repos/171111443/shield?branch=master&style=flat)](https://github.styleci.io/repos/171111443) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/TheDoctor0/SublimeAMXXEditor/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/TheDoctor0/SublimeAMXXEditor/?branch=master) [![License](https://img.shields.io/github/license/TheDoctor0/SublimeAMXXEditor.svg?color=sucess)](https://img.shields.io/github/license/TheDoctor0/SublimeAMXXEditor.svg?color=sucess&style=plastic)
+
 Sublime Text 3 plugin for AMXX development.
 
 This is a fork of [Sublime AMXX-Editor by Destro](https://amxmodx-es.com/Thread-Editor-Sublime-AMXX-Editor-v3-0Beta) with few tweaks and bugfixes.
 
 ## Features
+
 - Integration with AMXX compiler
 - Advanced syntax
 - Auto-complete for functions (explores include files)
